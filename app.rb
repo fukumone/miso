@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra-websocket'
 require './config/environments'
+require './models/message.rb'
 
 class MisoApp < Sinatra::Base
   configure :development do
@@ -21,7 +22,11 @@ class MisoApp < Sinatra::Base
           settings.sockets << ws
         end
         ws.onmessage do |msg|
-          EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+          @message = Message.new(content: msg)
+
+          if @message.save
+            EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+          end
         end
         ws.onclose do
           warn("websocket closed")

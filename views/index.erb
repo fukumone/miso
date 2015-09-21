@@ -24,7 +24,7 @@
           input.onclick = function(){ input.value = "" };
           f.onsubmit    = function(){
             ws.send(input.value);
-            input.value = "send a message";
+            input.value = "";
             return false;
           }
         }(document.getElementById('form'));
