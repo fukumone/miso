@@ -1,6 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>Miso Chat</title>
+  </head>
   <body>
-     <h1>Miso Chat Server</h1>
+     <h1>Miso Chat</h1>
      <form id="form">
        <input type="text" id="input" value="send a message"></input>
      </form>
@@ -9,7 +14,6 @@
      <div id="msgs"><%= message.content %></div>
      <% end %>
   </body>
-
   <script type="text/javascript">
     window.onload = function(){
       (function(){
