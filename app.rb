@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra-websocket'
+require './config/environments'
 
 class MisoApp < Sinatra::Base
   configure :development do
