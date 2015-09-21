@@ -13,6 +13,7 @@ class MisoApp < Sinatra::Base
   set :sockets, []
 
   get '/' do
+    @messages = Message.order(created_at: :desc)
     if !request.websocket?
       erb :index
     else

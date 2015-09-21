@@ -5,6 +5,9 @@
        <input type="text" id="input" value="send a message"></input>
      </form>
      <div id="msgs"></div>
+     <% @messages.each do |message| %>
+     <div id="msgs"><%= message.content %></div>
+     <% end %>
   </body>
 
   <script type="text/javascript">
