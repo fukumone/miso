@@ -10,7 +10,3 @@ env = env_arg || ENV["SINATRA_ENV"] || "development"
 use ActiveRecord::ConnectionAdapters::ConnectionManagement # close connection to the DDBB properly...https://github.com/puma/puma/issues/59
 databases = YAML.load_file("config/database.yml")
 ActiveRecord::Base.establish_connection(databases[env])
-
-if env == 'test'
-  User.destroy_all
-end
