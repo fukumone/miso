@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Miso Chat</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body>
      <h1>Miso Chat</h1>
-     <form id="form">
-       <input type="text" id="input" value="send a message"></input>
+     <form>
+       <input type="text" value="send a message"></input>
      </form>
      <div id="msgs"></div>
      <% @messages.each do |message| %>
@@ -15,27 +16,28 @@
      <% end %>
   </body>
   <script type="text/javascript">
-    window.onload = function(){
-      (function(){
-        var show = function(el){
-          return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
-        }(document.getElementById('msgs'));
+    $(document).ready(function(){
+      var show = function(message){
+        $('#msgs').append(message + '</br>');
+      }
 
-        var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
-        ws.onopen    = function()  { show('Chat opened'); };
-        ws.onclose   = function()  { show('Chat closed'); }
-        ws.onmessage = function(m) { show('Chat message: ' +  m.data); };
+      var web_socket = new WebSocket('ws://' + window.location.host + window.location.pathname);
+      web_socket.onopen = function() { show('Chat opened') }
+      web_socket.onclose = function() { show('Chat closed') }
+      web_socket.onmessage = function(m) { show('Chat message: ' + m.data) }
 
-        var sender = function(f){
-          var input     = document.getElementById('input');
-          input.onclick = function(){ input.value = "" };
-          f.onsubmit    = function(){
-            ws.send(input.value);
-            input.value = "";
-            return false;
-          }
-        }(document.getElementById('form'));
-      })();
-    }
+      var form = $('form'),
+          input = form.find('input');
+
+      input.click(function(){
+        input.val("")
+      });
+
+      form.submit(function(){
+        web_socket.send(input.val());
+        input.val("");
+        return false;
+      });
+    });
   </script>
 </html>
