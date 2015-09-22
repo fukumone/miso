@@ -1,11 +1,21 @@
+<link rel="stylesheet" href="index.css">
 <h1>Miso Chat</h1>
-<form>
- <input type="text" value="send a message"></input>
+
+<form class="form-inline">
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="send a message" required></input>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Send</button>
 </form>
-<div id="msgs"></div>
-<% @messages.each do |message| %>
-  <div id="msgs"><%= message.content %></div>
-<% end %>
+
+<div id="chat">
+  <div id="msgs"></div>
+  <% @messages.each do |message| %>
+    <div id="msgs"><%= message.content %></div>
+  <% end %>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -22,7 +32,7 @@
         input = form.find('input');
 
     input.click(function(){
-      input.val("")
+      input.val("");
     });
 
     form.submit(function(){
