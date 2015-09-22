@@ -3,6 +3,9 @@ require 'sinatra/activerecord'
 require 'json'
 require 'dotenv'
 
+Time.zone = "Tokyo"
+ActiveRecord::Base.default_timezone = :local
+
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each {|file| require file }
 
 env_index = ARGV.index("-e")
