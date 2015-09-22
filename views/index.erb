@@ -13,7 +13,7 @@
 <div id="chat">
   <div id="msgs"></div>
   <% @messages.each do |message| %>
-    <div id="msgs"><%= message.content %></div>
+    <div id="msgs">Chat message: <%= message.content %><%= message.created_at.strftime("%Y年%m月%d日%H時%M分%S秒") %></div>
   <% end %>
 </div>
 
