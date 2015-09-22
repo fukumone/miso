@@ -13,7 +13,7 @@
 <div id="chat">
   <div id="open_websocket"></div>
   <% @messages.each do |message| %>
-    <div>Chat message: <%= message.content %> (<%= message.created_at.strftime("%Y年%m月%d日%H時%M分%S秒") %>)</div>
+    <div>Chat message: <%= message.content %> (<%= message.created_at.strftime("%Y-%m-%d-%H:%M:%S") %>)</div>
   <% end %>
 </div>
 
