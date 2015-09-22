@@ -14,3 +14,7 @@ gem 'sinatra-websocket'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'pg'
+
+group :development do
+  gem 'foreman'
+end
