@@ -9,6 +9,8 @@ class MisoApp < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  layout 'layout'
+
   set :server, 'thin'
   set :sockets, []
 

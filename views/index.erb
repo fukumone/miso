@@ -1,45 +1,34 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <title>Miso Chat</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  </head>
-  <body>
-     <h1>Miso Chat</h1>
-     <form>
-       <input type="text" value="send a message"></input>
-     </form>
-     <div id="msgs"></div>
-     <% @messages.each do |message| %>
-     <div id="msgs"><%= message.content %></div>
-     <% end %>
-  </body>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var show = function(message){
-        $('#msgs').append(message + '</br>');
-      }
+<h1>Miso Chat</h1>
+<form>
+ <input type="text" value="send a message"></input>
+</form>
+<div id="msgs"></div>
+<% @messages.each do |message| %>
+  <div id="msgs"><%= message.content %></div>
+<% end %>
 
-      var web_socket = new WebSocket('ws://' + window.location.host + window.location.pathname);
-      web_socket.onopen = function() { show('Chat opened') }
-      web_socket.onclose = function() { show('Chat closed') }
-      web_socket.onmessage = function(m) { show('Chat message: ' + m.data) }
+<script type="text/javascript">
+  $(document).ready(function(){
+    var show = function(message){
+      $('#msgs').append(message + '</br>');
+    }
 
-      var form = $('form'),
-          input = form.find('input');
+    var web_socket = new WebSocket('ws://' + window.location.host + window.location.pathname);
+    web_socket.onopen = function() { show('Chat opened') }
+    web_socket.onclose = function() { show('Chat closed') }
+    web_socket.onmessage = function(m) { show('Chat message: ' + m.data) }
 
-      input.click(function(){
-        input.val("")
-      });
+    var form = $('form'),
+        input = form.find('input');
 
-      form.submit(function(){
-        web_socket.send(input.val());
-        input.val("");
-        return false;
-      });
+    input.click(function(){
+      input.val("")
     });
-  </script>
-</html>
+
+    form.submit(function(){
+      web_socket.send(input.val());
+      input.val("");
+      return false;
+    });
+  });
+</script>
