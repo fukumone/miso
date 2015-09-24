@@ -23,7 +23,7 @@
       $('#open_websocket').after(message + '</br>');
     }
 
-    var web_socket = new WebSocket('ws://' + window.location.host + window.location.pathname);
+    var web_socket = new ReconnectingWebSocket('ws://' + window.location.host + window.location.pathname);
     web_socket.onopen = function() {
       $('#open_websocket').html('<div>Chat opened！</div>')
     }
