@@ -10,7 +10,7 @@ Dir[File.dirname(__FILE__) + '/models/*.rb'].each {|file| require file }
 
 env_index = ARGV.index("-e")
 env_arg = ARGV[env_index + 1] if env_index
-env = env_arg || ENV["SINATRA_ENV"] || "development"
+env = env_arg || ENV["RACK_ENV"] || "development"
 
 Dotenv.load(".env.#{env}")
 
