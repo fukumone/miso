@@ -14,8 +14,8 @@ test:
 
 production:
   adapter: postgresql
-  host: ENV['HOST']
-  post: ENV['PORT']
-  database: ENV['DATABASE']
-  username: ENV['USERNAME']
-  password: ENV['PASSWORD']
+  host: <%= ENV['HOST'] %>
+  post: <%= ENV['PORT'] %>
+  database: <%= ENV['DATABASE'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
