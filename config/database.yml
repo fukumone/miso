@@ -17,5 +17,4 @@ production:
   host: ENV['HOST']
   database: ENV['DATABASE']
   username: ENV['USERNAME']
-  port: ENV['PORT']
   password: ENV['PASSWORD']
