@@ -24,6 +24,8 @@
     }
 
     var web_socket = new ReconnectingWebSocket('ws://' + window.location.host + window.location.pathname);
+    web_socket.debug = true;
+    web_socket.timeoutInterval = 60000; // 1 minute
     web_socket.onopen = function() {
       $('#open_websocket').html('<div>Chat opened！</div>')
     }
