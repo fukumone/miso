@@ -5,7 +5,7 @@ WebSocket Demo Application
 # To Install and Run:
 
 ```
-$ cp config/database.yml.sample config/database.yml
+$ echo DATABASE_URL='postgresql://root:@localhost/miso_development' > .env.development
 $ rake db:create
 $ rake db:migrate
 
