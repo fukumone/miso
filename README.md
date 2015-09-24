@@ -11,6 +11,6 @@ $ rake db:migrate
 
 $ bundle install
 
-$ rackup
-# open localhost:9292
+$ foreman start
+# open localhost:5000
 ```
