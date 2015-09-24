@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  host: localhost
+  database: miso_development
+  username: root
+  password: password
+
+test:
+  adapter: postgresql
+  host: localhost
+  database: miso_test
+  username: root
+  password: password
+
+production:
+  adapter: postgresql
+  host: ENV['HOST']
+  database: ENV['DATABASE']
+  username: ENV['USERNAME']
+  port: ENV['PORT']
+  password: ENV['PASSWORD']
