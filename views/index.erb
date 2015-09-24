@@ -29,7 +29,6 @@
     web_socket.onopen = function() {
       $('#open_websocket').html('<div>Chat opened！</div>')
     }
-    web_socket.onclose = function() { show('Chat closed！') }
     web_socket.onmessage = function(m) { show('Chat message: ' + m.data) }
 
     var form = $('form'),
